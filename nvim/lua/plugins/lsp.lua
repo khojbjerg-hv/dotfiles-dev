@@ -1,12 +1,12 @@
 return {
-  -- 1. Turn off the downloader's auto-install trigger
+  -- Turn off the downloader's auto-install trigger
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {
       automatic_installation = false,
     },
   },
-  -- 2. Clear out LazyVim's default background download list
+  -- Clear out LazyVim's default background download list
   {
     "mason-org/mason.nvim",
     opts = {

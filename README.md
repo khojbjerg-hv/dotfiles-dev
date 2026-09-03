@@ -15,9 +15,9 @@ Following packages needs to be baked into the image:
 
 
 ## Setup new Dev Container
-Dev Containers build using [Dev Container CLI](https://github.com/devcontainers/cli).
+Dev Containers build and run using [Dev Container CLI](https://github.com/devcontainers/cli).
 
-Build and start and run the container from the project directory. Dev Container CLI will pull dotfiles from this repository and run the setup script automatically:
+Dev Container CLI clone dotfiles from repository and run the setup script automatically:
 ```zsh
 devcontainer up --dotfiles-repository https://github.com/khojbjerg-hv/dotfiles-dev
 ```
@@ -26,12 +26,6 @@ Access the Dev Container using devcontainer or docker exec.
 ```zsh
 devcontainer exec zsh
 ```
-
-Run mise install. This will setup the dev environment.
-```zsh
-mise install
-```
-
 
 From the project directory /workspaces/project1:
 1. Run mise install
@@ -61,7 +55,7 @@ mise install
 
 
 ### Dev Container Image exampler
-Simple custom Dev Container build.
+Simple Custom Dev Container config.
 
 Dockerfile :
 ```Dockerfile

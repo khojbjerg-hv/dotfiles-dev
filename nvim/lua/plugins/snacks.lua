@@ -11,11 +11,14 @@ return {
           files = { hidden = true, ignored = true },
         },
       },
+      explorer = {
+        trash = false, -- Disables trash and falls back to permanent rm
+      },
     },
     config = function(_, opts)
       require("snacks").setup(opts)
 
-      -- 2. Flatten and normalize path highlight groups
+      -- normalize path highlight groups - removes all the color effects on files and folders
       local highlights = {
         Normal = {
           "SnacksPickerGitStatusAdded",

@@ -34,15 +34,9 @@ setopt prompt_subst
 
 export TERM="screen-256color"
 export UV_PROJECT_ENVIRONMENT="$HOME/.venv"
-export EDITOR=nvim
-export VISUAL=nvim
 export LSCOLORS='gxfxcxdxbxegedabagacad'
 LANG=C.UTF-8
 DOTFILES=~/dotfiles
-
-# Force the Zsh command line interface to use Emacs keybindings 
-# This overrides Zsh's automatic switch to Vi mode caused by export variables above
-bindkey -e
 
 # Aliases
 

@@ -17,9 +17,9 @@ prompt_simple_setup() {
     local context=""
 
     if [[ -n "$SSH_CONNECTION" ]]; then
-        context="${GRUV_BLUE}%n${GRUV_TEXT}@${GRUV_BLUE}%m "
+        context="${blue}%n${GRUV_TEXT}@${blue}%m "
     elif [[ -f /.dockerenv ]]; then
-        context="${purple}[dev] "
+        context="${green}[dev] "
     fi
 
     PROMPT=$'\n'"${context}%F{green}%~"'${vcs_info_msg_0_}'$'\n'"%F{red}❯ %f"

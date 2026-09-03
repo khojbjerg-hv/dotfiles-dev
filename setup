@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+echo "Starting dotfiles environment setup..."
+
+USER="dev"
+
+if [ "$(id -u)" -eq 0 ]; then
+  echo "Switching context to 'vscode user"
+  exec su - $USER -c "$0"
+fi
+
+XDG_CONFIG_HOME=$HOME/.config
+
+# Configure dotfiles
+mkdir -p $XDG_CONFIG_HOME
+ln -sfn ~/dotfiles/zsh ~/.zsh
+ln -sfn ~/dotfiles/.zshrc ~/.zshrc
+ln -sfn ~/dotfiles/nvim ~/.config/nvim
+ln -sfn ~/dotfiles/mise ~/.config/mise
+
+# install mise
+
+curl https://mise.run | sh
+
+# Change default shell to Zsh for the dev user
+if [ "$SHELL" != "$(which zsh)" ]; then
+  echo "Changing default shell to Zsh..."
+  sudo chsh -s "$(which zsh)" $USER
+fi
+
+echo "Environment setup complete!"

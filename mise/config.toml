@@ -1,0 +1,5 @@
+[tools]
+fd = "latest"
+lazygit = "latest"
+neovim = "latest"
+ripgrep = "latest"

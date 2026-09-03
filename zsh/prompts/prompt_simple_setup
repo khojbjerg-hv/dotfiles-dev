@@ -1,0 +1,28 @@
+prompt_simple_setup() {
+    # Enable Zsh Version Control System Info
+    autoload -Uz vcs_info
+    #precmd_functions+=(vcs_info)
+    (( ${precmd_functions[(Ie)vcs_info]} )) || precmd_functions+=(vcs_info)
+
+    # Format the Git output
+    zstyle ':vcs_info:git:*' formats " %F{yellow}%b%u%c"
+    zstyle ':vcs_info:git:*' actionformats " %F{yellow}%b %F{red}(%a)%u%c"
+
+    # Look for dirty/staged changes
+    zstyle ':vcs_info:*' check-for-changes false
+    zstyle ':vcs_info:git:*' unstagedstr "%F{red}*"
+    zstyle ':vcs_info:git:*' stagedstr "%F{green}+"
+
+    # Assemble the Prompt
+    local context=""
+
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        context="${GRUV_BLUE}%n${GRUV_TEXT}@${GRUV_BLUE}%m "
+    elif [[ -f /.dockerenv ]]; then
+        context="${purple}[dev] "
+    fi
+
+    PROMPT=$'\n'"${context}%F{green}%~"'${vcs_info_msg_0_}'$'\n'"%F{red}❯ %f"
+}
+
+prompt_simple_setup "$@"
